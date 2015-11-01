@@ -7,12 +7,7 @@ use mysqli;
 class Database
 {
 	private static function connect(){
-		$host = 'localhost';
-		$username = 'homestead';
-		$password = 'secret';
-		$database = 'techblog';
-
-		$connection = new mysqli($host, $username, $password, $database);
+		$connection = new mysqli(host, username, password, database);
 
 		try{
 			if(!$connection){
