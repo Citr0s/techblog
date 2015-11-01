@@ -2,6 +2,7 @@
 	require 'vendor/autoload.php';
 
 	use Techblog\User;
+	use Techblog\Database;
 ?>
 <!DOCTYPE html>
 <html lang="en">
