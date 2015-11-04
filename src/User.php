@@ -3,7 +3,7 @@ namespace Techblog;
 
 class User
 {
-	public static function test(){
+	public static function check($user){
 		return 'Hello World!';
 	}
 }
