@@ -29,11 +29,12 @@ class Input
 	/*
 		Checks if any fields are empty.
 		@param <array> $input
+		@param <array> $expected
 	*/
-	private static function hasEmptyInputs($input){
+	private static function hasEmptyInputs($input, $expected){
 		foreach($input as $field){
-			if(empty($field)){
-				throw new Exception("All fields are requierd.");
+			if(in_array($field, $expected) && empty($field)){
+				throw new Exception("Fields marked with (*) are required.");
 			}
 		}
 	}
@@ -57,7 +58,7 @@ class Input
 	*/
 	public static function check($input, $expected){
 		self::hasEnoughInputs($input, $expected);
-		self::hasEmptyInputs($input);
+		self::hasEmptyInputs($input, $expected);
 		self::sanitise($input);
 	}
 }
