@@ -1,7 +1,8 @@
 <?php
-	session_start();
 	require_once 'vendor/autoload.php';
 	include_once 'src/config.php';
+
+	session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">

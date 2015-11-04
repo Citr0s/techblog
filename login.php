@@ -1,22 +1,26 @@
 <?php
 	use Techblog\User;
+	use Techblog\Input;
 
 	include 'inc/header.php';
 
 
 	if($_POST){
-		echo 'posted';
+		$expected = ['email', 'password'];
+		if(!Input::check($_POST, $expected)){
+			echo '<div class="alert alert-danger" role="alert">All fields are required.</div>';
+		}
 	}
 ?>
 <h1>Login</h1>
 <form method="post" action="login.php">
 	<div class="form-group">
 		<label for="email">Email</label>
-		<input type="email" class="form-control" id="email" placeholder="Email" required>
+		<input type="email" name="email" class="form-control" id="email" placeholder="Email"  value="<?php echo ($_POST) ? $_POST['email'] : ''; ?>">
 	</div>
 	<div class="form-group">
 		<label for="password">Password</label>
-		<input type="password" class="form-control" id="password" placeholder="Password" required>
+		<input type="password" name="password" class="form-control" id="password" placeholder="Password" >
 	</div>
 	<button type="submit" class="btn btn-default">Submit</button>
 </form>
