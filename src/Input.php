@@ -5,7 +5,7 @@ class Input
 {
 	/*
 		@param <array> $input
-		@return <array> $result
+		@return <bool> $result
 	*/
 	public static function sanitise($input){
 		foreach($input as $field){
@@ -19,7 +19,9 @@ class Input
 		return true;
 	}
 	/*
-	
+		@param <array> $input
+		@param <array> $expected
+		@return <bool> $result
 	*/
 	public static function check($input, $expected){
 		if(count($input) !== count($expected)){
@@ -31,7 +33,7 @@ class Input
 				return false;
 			}
 		}
-		
+
 		self::sanitise($input);
 		return true;
 	}
