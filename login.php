@@ -3,6 +3,10 @@
 
 	include 'inc/header.php';
 
+	if(User::loggedIn()){
+		header('Location: index.php');
+		die();
+	}
 
 	if($_POST){
 		try{
@@ -20,7 +24,7 @@
 	</div>
 	<div class="form-group">
 		<label for="password">Password*</label>
-		<input type="txt" name="password" class="form-control" id="password" placeholder="Password" required>
+		<input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
 	</div>
 	<button type="submit" class="btn btn-default">Submit</button>
 </form>

@@ -51,18 +51,20 @@ class Database
 		@return <array> $data
 	*/
 	public static function find($field){
-		$query = '';
+		$query = "";
 		foreach($field as $item => $value){
 			switch($item){
 				case 'select':
-					$query .= 'SELECT ' . $value;
+					$query .= "SELECT {$value}";
 					break;
 				case 'from':
-					$query .= ' FROM ' . $value . ' WHERE ';
+					$query .= " FROM {$value} WHERE ";
+					break;
+				case 'password':
+					$query .= "{$item} = '" . sha1($value) . "' AND ";
 					break;
 				default:
-					$item === 'password' ? $value = sha1($value) : $value = $value;
-					$query .= $item . ' = ' . $value . ' AND ';
+					$query .= "{$item} = '{$value}' AND ";
 					break;
 			}
 		}
