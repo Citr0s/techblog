@@ -4,8 +4,8 @@
 
 	include 'inc/header.php';
 ?>
-<h1>Techblog</h1>
-<p><a href="login.php">Login</a></p>
+<h1>Login</h1>
+<p><?php echo User::test(); ?></p>
 <?php
 	include 'inc/footer.php';
 ?>
