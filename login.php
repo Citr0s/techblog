@@ -8,7 +8,7 @@
 	if($_POST){
 		$expected = ['email', 'password'];
 		if(!Input::check($_POST, $expected)){
-			echo '<div class="alert alert-danger" role="alert">All fields are required.</div>';
+			echo '<div class="alert alert-danger" role="alert">There were errors with your input. Please correct and try again.</div>';
 		}
 	}
 ?>

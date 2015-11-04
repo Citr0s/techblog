@@ -18,6 +18,7 @@ class Input
 		}
 		return true;
 	}
+	
 	/*
 		@param <array> $input
 		@param <array> $expected
