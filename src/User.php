@@ -8,6 +8,7 @@ use Techblog\Database;
 class User
 {
 	private $email;
+
 	function __construct($email){
 		$this->email = $email;
 	}
@@ -16,21 +17,21 @@ class User
 		Try to log user in.
 	*/
 	public static function attemptLogin(){
-		//TODO
-		//check if active
-		//update updated_at field
 		$expected = ['email', 'password'];
 		$data = Input::check($_POST, $expected);
 
-		$query = [
+		$extra = [
 			'select' => '*',
 			'from' => 'users',
 			];
-		$data = $query + $data;
+		$data = $extra + $data;
 
-		if(Database::find($data)->num_rows === 0){
+		$results = Database::find($data);
+
+		if($results->num_rows === 0){
 			throw new Exception("Email or Password is incorrect.");
 		}
+		self::checkIfActive($results);
 		$user = new User($data['email']);
 		self::login($user);
 		header('Location: index.php');
@@ -59,6 +60,18 @@ class User
 	public static function loggedIn(){
 		if(isset($_SESSION['user'])){
 			return true;
+		}
+	}
+
+	/*
+		Check if user is active.
+		@param <object> $data
+	*/
+	private static function checkIfActive($data){
+		while($row = mysqli_fetch_object($data)){
+			if($row->active !== '1'){
+				throw new Exception("This account is not currenty active.");
+			}
 		}
 	}
 }
