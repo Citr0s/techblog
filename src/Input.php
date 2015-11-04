@@ -17,7 +17,8 @@ class Input
 
 	/*
 		Checks if actual match expected inputs.
-		@param $email
+		@param <array> $input
+		@param <array> $expected
 	*/
 	private static function hasEnoughInputs($input, $expected){
 		if(count($input) !== count($expected)){
@@ -26,8 +27,8 @@ class Input
 	}
 
 	/*
-		Checks if any fields are empty;
-		@param $email
+		Checks if any fields are empty.
+		@param <array> $input
 	*/
 	private static function hasEmptyInputs($input){
 		foreach($input as $field){
