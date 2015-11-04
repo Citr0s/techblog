@@ -1,7 +1,4 @@
 <?php
-	use Techblog\User;
-	use Techblog\Database;
-
 	include 'inc/header.php';
 ?>
 <h1>Techblog</h1>

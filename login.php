@@ -1,22 +1,22 @@
 <?php
 	use Techblog\User;
-	use Techblog\Database;
+
+	include 'inc/header.php';
+
 
 	if($_POST){
 		echo 'posted';
 	}
-
-	include 'inc/header.php';
 ?>
 <h1>Login</h1>
 <form method="post" action="login.php">
 	<div class="form-group">
 		<label for="email">Email</label>
-		<input type="email" class="form-control" id="email" placeholder="Email">
+		<input type="email" class="form-control" id="email" placeholder="Email" required>
 	</div>
 	<div class="form-group">
 		<label for="password">Password</label>
-		<input type="password" class="form-control" id="password" placeholder="Password">
+		<input type="password" class="form-control" id="password" placeholder="Password" required>
 	</div>
 	<button type="submit" class="btn btn-default">Submit</button>
 </form>
