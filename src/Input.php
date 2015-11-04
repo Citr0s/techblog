@@ -48,7 +48,9 @@ class Input
 				self::isValidEmail($value);
 			}
 			htmlentities($field);
-		}	
+		}
+
+		return $input;
 	}
 
 	/*
@@ -59,6 +61,6 @@ class Input
 	public static function check($input, $expected){
 		self::hasEnoughInputs($input, $expected);
 		self::hasEmptyInputs($input, $expected);
-		self::sanitise($input);
+		return self::sanitise($input);
 	}
 }
