@@ -1,7 +1,4 @@
 <?php
-	require 'vendor/autoload.php';
-	include 'src/config.php';
-
 	use Techblog\User;
 	use Techblog\Database;
 

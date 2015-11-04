@@ -6,6 +6,10 @@ use mysqli;
 
 class Database
 {
+	/*
+		Connects to a database.
+		@return <object> $response
+	*/
 	private static function connect(){
 		$connection = new mysqli(host, username, password, database);
 
@@ -19,6 +23,11 @@ class Database
 		}
 	}
 
+	/*
+		Creates database table.
+		@param <array> $table
+		@return <string> $result
+	*/
 	public static function seed($table){
 		$query = '';
 
