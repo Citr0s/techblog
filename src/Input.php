@@ -39,7 +39,6 @@ class Input
 	/*
 		Sanitises input.
 		@param <array> $input
-		@return <bool> $result
 	*/
 	public static function sanitise($input){
 		foreach($input as $field => $value){
@@ -54,13 +53,10 @@ class Input
 		Checks for correct input.
 		@param <array> $input
 		@param <array> $expected
-		@return <bool> $result
 	*/
 	public static function check($input, $expected){
 		self::hasEnoughInputs($input, $expected);
 		self::hasEmptyInputs($input);
 		self::sanitise($input);
-
-		return true;
 	}
 }
