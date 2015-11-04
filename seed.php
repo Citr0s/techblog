@@ -10,6 +10,9 @@ $users_table = [
 		'id' => 'int(11)',
 		'name' => 'varchar(50)',
 		'password' => 'varchar(150)',
+		'active' => 'boolean',
+		'created_at' => 'timestamp',
+		'updated_at' => 'timestamp',
 	]
 ];
 

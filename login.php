@@ -1,14 +1,12 @@
 <?php
 	use Techblog\User;
-	use Techblog\Input;
 
 	include 'inc/header.php';
 
 
 	if($_POST){
 		try{
-			$expected = ['email', 'password'];
-			Input::check($_POST, $expected);
+			User::attemptLogin();
 		}catch(Exception $e){
 			echo '<div class="alert alert-danger" role="alert">' . $e->getMessage() . '</div>';
 		}
