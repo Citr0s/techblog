@@ -8,7 +8,8 @@ $users_table = [
 	'name' => 'users',
 	'columns' => [
 		'id' => 'int(11)',
-		'name' => 'varchar(50)'
+		'name' => 'varchar(50)',
+		'password' => 'varchar(150)',
 	]
 ];
 
