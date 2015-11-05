@@ -38,6 +38,25 @@ class User
 	}
 
 	/*
+		Try to log register in.
+	*/
+	public static function attemptRegister(){
+		$expected = ['email', 'password', 'password_confirm'];
+		$data = Input::check($_POST, $expected);
+
+		$extra = [
+			'to' => 'users',
+			];
+		$data = $extra + $data;
+
+		//$results = Database::create($data);
+
+		$user = new User($data['email']);
+		self::login($user);
+		header('Location: index.php');
+	}
+
+	/*
 		Login user.
 		@param <object> $user
 	*/

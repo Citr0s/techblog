@@ -18,19 +18,6 @@ class Input
 	}
 
 	/*
-		Checks if actual match expected inputs.
-		@param <array> $input
-		@param <array> $expected
-		@return <bool> $result
-	*/
-	private static function hasEnoughInputs($input, $expected){
-		if(count($input) !== count($expected)){
-			throw new Exception("All inputs are required.");
-		}
-		return true;
-	}
-
-	/*
 		Checks if any fields are empty.
 		@param <array> $input
 		@param <array> $expected
@@ -67,7 +54,6 @@ class Input
 		@return <array> $input
 	*/
 	public static function check($input, $expected){
-		self::hasEnoughInputs($input, $expected);
 		self::hasEmptyInputs($input, $expected);
 		return self::sanitise($input);
 	}

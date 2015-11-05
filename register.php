@@ -22,8 +22,8 @@
 		<input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
 	</div>
 	<div class="form-group">
-		<label for="password">Password Confirm*</label>
-		<input type="password" name="password" class="form-control" id="password" placeholder="Password Confirm" required>
+		<label for="password_confirm">Password Confirm*</label>
+		<input type="password" name="password_confirm" class="form-control" id="password_confirm" placeholder="Password Confirm" required>
 	</div>
 	<button type="submit" class="btn btn-default">Register</button>
 </form>
