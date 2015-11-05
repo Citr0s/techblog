@@ -5,18 +5,13 @@ use Exception;
 
 class InputTest extends \PHPUnit_Framework_TestCase
 {
-	public function testSanitiseFunciton(){
-
-		$input = ['email' => 'xxx@aaa.pl'];
-
-		Input::sanitise($input);
-	}
-
-	public function testCheckFunciton(){
+	public function test_check_funciton(){
 
 		$actual = ['test'];
 		$expected = ['test'];
 
-		Input::check($actual, $expected);
+		$output = Input::check($actual, $expected);
+
+		$this->assertEquals($expected, $output);
 	}
 }
