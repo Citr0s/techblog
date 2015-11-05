@@ -8,7 +8,7 @@
 	if(User::loggedIn()){
 		echo '<p><a href="logout.php">Logout</a></p>';
 	}else{
-		echo '<p><a href="login.php">Login</a></p>';
+		echo '<p><a href="login.php">Login</a> <a href="register.php">Register</a></p>';
 	}
 ?>
 <?php
