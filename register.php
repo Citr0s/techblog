@@ -3,6 +3,11 @@
 
 	include 'inc/header.php';
 
+	if(User::loggedIn()){
+		header('Location: index.php');
+		die();
+	}
+
 	if($_POST){
 		try{
 			User::attemptRegister();
