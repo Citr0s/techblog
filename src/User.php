@@ -19,18 +19,16 @@ class User
 	public static function attemptLogin(){
 		$expected = ['email', 'password'];
 		$data = Input::check($_POST, $expected);
-
 		$extra = [
 			'select' => '*',
 			'from' => 'users',
 			];
 		$data = $extra + $data;
 
-		$results = Database::find($data);
-
-		if($results->num_rows === 0){
+		if(!Database::exists($data)){
 			throw new Exception("Email or Password is incorrect.");
 		}
+
 		self::checkIfActive($results);
 		$user = new User($data['email']);
 		self::login($user);
@@ -38,18 +36,27 @@ class User
 	}
 
 	/*
-		Try to log register in.
+		Try to register a user.
 	*/
 	public static function attemptRegister(){
 		$expected = ['email', 'password', 'password_confirm'];
 		$data = Input::check($_POST, $expected);
+		$extra = [
+			'select' => '*',
+			'from' => 'users',
+			];
+		$user = $extra + $data;		
+
+		if(Database::exists($user)){
+			throw new Exception("User with this email address already exists.");
+		}
 
 		$extra = [
 			'to' => 'users',
 			];
 		$data = $extra + $data;
 
-		//$results = Database::create($data);
+		Database::create($data);
 
 		$user = new User($data['email']);
 		self::login($user);

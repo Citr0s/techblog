@@ -18,6 +18,19 @@ class Input
 	}
 
 	/*
+		Checks if strings match is valid.
+		@param <string> $password
+		@param <string> $password_confirm
+		@return <bool> $result
+	*/
+	private static function doPasswordsMatch($password, $password_confirm){
+		if($password !== $password_confirm){
+			throw new Exception("Passwords do not match.");
+		}
+		return true;
+	}
+
+	/*
 		Checks if any fields are empty.
 		@param <array> $input
 		@param <array> $expected
@@ -55,6 +68,7 @@ class Input
 	*/
 	public static function check($input, $expected){
 		self::hasEmptyInputs($input, $expected);
+		(isset($input['password']) && isset($input['password_confirm'])) ? self::doPasswordsMatch($input['password'], $input['password_confirm']) : '';
 		return self::sanitise($input);
 	}
 }

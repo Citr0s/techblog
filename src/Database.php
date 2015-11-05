@@ -62,7 +62,10 @@ class Database
 					$query .= " FROM {$value} WHERE ";
 					break;
 				case 'password':
-					$query .= "{$item} = '" . sha1($value) . "' AND ";
+					//do nothing
+					break;
+				case 'password_confirm':
+					//do nothing
 					break;
 				default:
 					$query .= "{$item} = '{$value}' AND ";
@@ -71,6 +74,56 @@ class Database
 		}
 		$query = rtrim($query, ' AND ');
 		return self::connect()->query($query);
+	}
+
+	/*
+		Create records in database.
+		@param <array> $field
+		@return <array> $data
+	*/
+	public static function create($field){
+		$query = "INSERT INTO {$field['to']} VALUES ( '', ";
+		foreach($field as $item => $value){
+			switch($item){
+				case 'to':
+					//do nothing
+					break;
+				case 'password':
+					$query .= "'".sha1($value) . "', ";
+					break;
+				case 'password_confirm':
+					//do nothing
+					break;
+				default:
+					$query .= "'{$value}', ";
+					break;
+			}
+		}
+		switch($field['to']){
+			case 'users':
+				$query .= "1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP";
+				break;
+			default:
+				$query = rtrim($query, ' AND ');
+				break;
+
+		}
+		$query .= ' );';
+		return self::connect()->query($query);
+	}
+
+	/*
+		Check if row exists.
+		@param <array> $data
+		@return <bool> $result
+	*/
+	public static function exists($data){
+		$results = Database::find($data);
+
+		if($results->num_rows === 0){
+			return false;
+		}
+		return true;
 	}
 
 	/*
