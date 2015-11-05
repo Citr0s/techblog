@@ -28,6 +28,7 @@ class Database
 		@return <string> $result
 	*/
 	public static function seed($table){
+		self::drop($table['name']);
 		$query = '';
 		foreach($table as $name => $column){
 			switch($name){
@@ -70,5 +71,14 @@ class Database
 		}
 		$query = rtrim($query, ' AND ');
 		return self::connect()->query($query);
+	}
+
+	/*
+		Drops passed table.
+		@param <string> $table
+	*/
+	private static function drop($table){
+		$query = "DROP TABLE {$table}";
+		self::connect()->query($query);
 	}
 }

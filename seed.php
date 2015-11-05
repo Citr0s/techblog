@@ -1,3 +1,8 @@
+<script>
+	if(!confirm("Entering this page will reseed your database. Are you sure you want to proceed?")){
+		window.location = history.back();
+	}
+</script>
 <?php
 require 'vendor/autoload.php';
 include 'src/config.php';
